@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,6 +32,22 @@ use Time::HiRes qw(sleep);
 use Fcntl qw(:flock);
 
 use Kernel::System::ObjectManager;
+
+# Disable warnings for redefined subroutines by setting our own WARN signal handler.
+#   Forcing package reloads in the object manager when discarding objects triggers warnings like these:
+#
+#     Subroutine HandleDelayedEvents redefined at /opt/otrs/Kernel/System/Event/Handler.pm line 67.
+#
+#   We must trap the warnings here as opposed in the object manager, as they might be emitted whenever any of the
+#   modules is reloaded in the current process. Output of the warnings on STDERR in the daemon context will trigger
+#   false task failures and sending of unnecessary emails to admins.
+#
+#   Please see bug#15227 for more information.
+local $SIG{__WARN__} = sub {
+    my $Message = shift;
+    return if $Message =~ m{Subroutine .* redefined at};
+    warn $Message;
+};
 
 print STDOUT "\nManage the OTRS daemon process.\n\n";
 
@@ -229,12 +246,12 @@ sub Start {
         print STDOUT "\nDebug information is stored in the daemon log files localed under: $LogDir\n\n";
     }
 
-    LOOP:
+    DAEMONCHECKER:
     while ($DaemonChecker) {
 
         if ($DaemonSuspend) {
             sleep .5;
-            next LOOP;
+            next DAEMONCHECKER;
         }
 
         MODULE:
@@ -282,7 +299,7 @@ sub Start {
                 );
 
                 my $DaemonObject;
-                LOOP:
+                DAEMONCHECKER:
                 while ($ChildRun) {
 
                     # Create daemon object if not exists.
@@ -306,12 +323,12 @@ sub Start {
                     # Wait 10 seconds if creation of object is not possible.
                     if ( !$DaemonObject ) {
                         sleep 10;
-                        last LOOP;
+                        last DAEMONCHECKER;
                     }
 
                     METHOD:
                     for my $Method ( 'PreRun', 'Run', 'PostRun' ) {
-                        last LOOP if !eval { $DaemonObject->$Method() };
+                        last DAEMONCHECKER if !eval { $DaemonObject->$Method() };
                     }
                 }
 

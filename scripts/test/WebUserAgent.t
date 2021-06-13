@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -51,7 +52,7 @@ my @Tests = (
     },
     {
         Name        => 'GET - http - invalid proxy - Test ' . $TestNumber++,
-        URL         => "http://ftp.otrs.org/pub/otrs/packages/otrs.xml",
+        URL         => "https://download.znuny.org/releases/packages/otrs.xml",
         Timeout     => $TimeOut,
         Proxy       => 'http://NoProxy',
         Success     => 0,
@@ -59,7 +60,7 @@ my @Tests = (
     },
     {
         Name        => 'GET - http - ftp proxy - Test ' . $TestNumber++,
-        URL         => "http://ftp.otrs.org/pub/otrs/packages/otrs.xml",
+        URL         => "https://download.znuny.org/releases/packages/otrs.xml",
         Timeout     => $TimeOut,
         Proxy       => 'ftp://NoProxy',
         Success     => 0,
@@ -67,14 +68,14 @@ my @Tests = (
     },
     {
         Name    => 'GET - http - long timeout - Test ' . $TestNumber++,
-        URL     => "http://ftp.otrs.org/pub/otrs/packages/otrs.xml",
+        URL     => "https://download.znuny.org/releases/packages/otrs.xml",
         Timeout => 100,
         Proxy   => $Proxy,
         Success => 1,
     },
     {
         Name    => 'GET - http - Header ' . $TestNumber++,
-        URL     => "http://ftp.otrs.org/pub/otrs/packages/otrs.xml",
+        URL     => "https://download.znuny.org/releases/packages/otrs.xml",
         Timeout => 100,
         Proxy   => $Proxy,
         Success => 1,

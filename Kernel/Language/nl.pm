@@ -5,7 +5,8 @@
 # Copyright (C) 2005-2007 Jurgen Rutgers <jurgen 'at' besite.nl>
 # Copyright (C) 2005-2007 Richard Hinkamp <richard 'at' besite.nl>
 # Copyright (C) 2010 Ton van Boven <ton 'at' avebo.nl>
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -30,7 +31,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.554520826278361;
+    $Self->{Completeness}        = 0.555198103623434;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -40,13 +41,13 @@ sub Data {
     $Self->{Translation} = {
 
         # Template: AdminACL
-        'ACL Management' => 'ACL beheer',
+        'ACL Management' => 'ACL-beheer',
         'Actions' => 'Acties',
-        'Create New ACL' => 'Nieuwe ACL aanmaken',
-        'Deploy ACLs' => 'ACLs activeren',
-        'Export ACLs' => 'Exporteer ACLs',
-        'Filter for ACLs' => 'Filter op ACLs',
-        'Just start typing to filter...' => 'Start met typen om te filteren',
+        'Create New ACL' => 'Maak een nieuwe ACL',
+        'Deploy ACLs' => 'ACL\'s implementeren',
+        'Export ACLs' => 'Exporteer ACL\'s',
+        'Filter for ACLs' => 'Filter voor ACL\'s',
+        'Just start typing to filter...' => 'Begin gewoon met typen om te filteren...',
         'Configuration Import' => 'Configuratie importeren',
         'Here you can upload a configuration file to import ACLs to your system. The file needs to be in .yml format as exported by the ACL editor module.' =>
             'Hier kunt u een configuratiebestand met ACLs importeren in uw systeem. Het bestand moet in .yml formaat zijn, zoals geexporteerd door de ACL module.',
@@ -1353,12 +1354,12 @@ sub Data {
         'Please visit our customer portal and file a request.' => '',
         'Everything else will be done as part of your contract.' => '',
         'Your installed OTRS version is %s.' => 'Jouw geÏnstalleerde OTRS-versie is %s.',
-        'To install this package, you need to update to OTRS %s or higher.' =>
+        'To install this package, you need to update to Znuny %s or higher.' =>
             '',
         'To install this package, the Maximum OTRS Version is %s.' => '',
         'To install this package, the required Framework version is %s.' =>
             '',
-        'Why should I keep OTRS up to date?' => '',
+        'Why should I keep Znuny up to date?' => '',
         'You will receive updates about relevant security issues.' => '',
         'You will receive updates for all other relevant OTRS issues' => '',
         'With your existing contract you can only use a small part of the %s.' =>
@@ -1416,18 +1417,18 @@ sub Data {
             'Wilt u dit pakket echt herinstalleren? Eventuele handmatige aanpassingen gaan verloren.',
         'Go to updating instructions' => 'Ga naar update instructies',
         'package information' => 'pakketinformatie',
-        'Package installation requires a patch level update of OTRS.' => '',
-        'Package update requires a patch level update of OTRS.' => '',
+        'Package installation requires a patch level update of Znuny.' => '',
+        'Package update requires a patch level update of Znuny.' => '',
         'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
             '',
-        'Please note that your installed OTRS version is %s.' => '',
-        'To install this package, you need to update OTRS to version %s or newer.' =>
+        'Please note that your installed Znuny version is %s.' => '',
+        'To install this package, you need to update Znuny to version %s or newer.' =>
             '',
-        'This package can only be installed on OTRS version %s or older.' =>
+        'This package can only be installed on Znuny version %s or older.' =>
             '',
-        'This package can only be installed on OTRS version %s or newer.' =>
+        'This package can only be installed on Znuny version %s or newer.' =>
             '',
-        'You will receive updates for all other relevant OTRS issues.' =>
+        'You will receive updates for all other relevant Znuny issues.' =>
             '',
         'How can I do a patch level update if I don’t have a contract?' =>
             '',
@@ -3319,10 +3320,10 @@ sub Data {
         'Loading, please wait...' => '',
 
         # JS Template: UploadContainer
-        'Click to select a file for upload.' => '',
-        'Click to select files or just drop them here.' => '',
-        'Click to select a file or just drop it here.' => '',
-        'Uploading...' => '',
+        'Click to select a file for upload.' => 'Klik om een bestand te selecteren om te uploaden.',
+        'Click to select files or just drop them here.' => 'Klik om bestanden te selecteren of zet ze hier neer.',
+        'Click to select a file or just drop it here.' => 'Klik om een bestand te selecteren of zet het hier neer.',
+        'Uploading...' => 'Uploaden...',
 
         # JS Template: InformationDialog
         'Process state' => '',
@@ -5377,7 +5378,7 @@ sub Data {
         # Perl Module: Kernel/System/Web/InterfaceInstaller.pm
         'Action "%s" not found!' => '',
 
-        # Database XML Definition: scripts/database/otrs-initial_insert.xml
+        # Database XML / SOPM Definition: scripts/database/otrs-initial_insert.xml
         'invalid-temporarily' => 'tijdelijk ongeldig',
         'Group for default access.' => 'Groep voor standaard toegang.',
         'Group of all administrators.' => 'Groep voor alle administrators.',
@@ -7803,7 +7804,6 @@ Het Helpdesk Team
             '',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
-        'Number of tickets to be displayed in each page.' => '',
         'OTRS Group Services' => 'OTRS Group diensten',
         'OTRS News' => 'OTRS Nieuws',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>

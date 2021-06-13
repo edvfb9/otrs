@@ -1,62 +1,79 @@
-What is ((OTRS)) Community Edition?
-===================================
-((OTRS)) Community Edition is one of the most flexible web-based ticketing
-systems used for Customer Service, Help Desk, IT Service Management.
-With a fast implementation and easy customization to your needs it
-helps you reducing costs and increasing the efficiency and transparency
-of your business communication. Please note that ((OTRS)) Community Edition
-offers limited [**OTRS**](https://www.otrs.com) functionality.
+<img align="center" src="https://github.com/znuny/Znuny/blob/rel-6_0/var/httpd/htdocs/skins/Agent/default/img/logo_bg.png">
 
-You can find a list of features in the
-[online documentation](https://doc.otrs.com/doc/manual/admin/6.0/en/html/otrs.html#features-of-otrs).
+<p align="center">
+    <img src="https://img.shields.io/github/v/tag/znuny/Znuny?label=latest%20release">
+    <img src="https://img.shields.io/github/workflow/status/znuny/Znuny/CI?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABv1BMVEUAAAD+9OfyjQb1pz3////4xH7qSgD3vG3vdgD61KL1q0j0oC/uagD2r1D3vnD2s1n3uWX4v3PnMAD2s1j1pj32rk7uaQD4xoL3u2r4xYD62KjucAD86c/3uWX1pTv0oTH0nyz0ojT1qUH3vW/85MT1pjz0nivzmSDzmB3zmB3zmiH0ny31q0f////1qULzmyPzmyP1pDf5zpP0ojT0nSf2sVT2slf0oTDzmR70ozb3u2v0pDfzmiH0nCX3tV35z5X1pz7zmiLzmiL1qkX3uGT0nSjzmiL1qUP4xH30pDbzmB70nCb3t2D60p30ojPzmR/0oTL5x4P0ozXzmiHzmyT1rEr2tFr0nSfzmyT1pz/4xYD1pz70nCfzmB7zmR/0nir1qD/86tH////2rk70ozX0oC/0nSf0oTH1pjz3t2HzlxzzlxvzlxvzlxvzlxvzlxvzlxvzlxvzmBzzlxvzlxvzlxvzlxvzlxvzlxvzlxvzlxvzmB3zlxvzlxvzlxvzlxvzlxvzlxvzlxvzlxvzlxvzlxvzlxvzmBzzlxvzlxvzlxvzlxrzlxvzlxvzlxvzlxvzlxvzlxzzlxvzlxz///8zTegBAAAAanRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9DdYRxPAsCQrnx/v3tqjQBYOraQAqk0CIZnfp+DH7yvw0EX+ncIA/A3SEIiPrGEQV394cDa/TbKy3f6lYGW83598JGAgAbXpWgkVYVWK32+wAAAAFiS0dEBI9o2VEAAAAHdElNRQflAxcGEwaMMq1yAAAAxklEQVQI12NgYGSSlZNXUFRSZmZhYGBgVVFVU9fI0tTS1mFjZ2DQ1dPPzsnNyy8oNDDk4GQwMi4qLikFgrJyE1MuBm4zc4uKShC/qtqSh4GB18rapgbEray1tQMaxmfv4FgH4tc7OQO5DPwurg0gbqObO5An4OHp1QTkNbd4+zAwCPr6+beCzG5rDxBiEA4MCu4A8Tq7QkJFGETDwrt7ekv7+idERIqJM0hERcfETpw0OS4+IVESaJJUUnJKalp6Rqa0DAMDAAI8OSF3w4d/AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAzLTIzVDA2OjE5OjA2KzAwOjAwu7i+QwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMy0yM1QwNjoxOTowNiswMDowMMrlBv8AAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC&label=CI">
+    <img src="https://badge.proxy.znuny.com/Znuny/rel-6_0">
+    <br>
+    <img src="https://img.shields.io/github/issues-raw/znuny/Znuny?">
+    <img src="https://img.shields.io/github/issues-closed-raw/znuny/Znuny?color=#44CC44">
+    <img src="https://isitmaintained.com/badge/open/znuny/Znuny.svg?">
+    <img src="https://isitmaintained.com/badge/resolution/znuny/Znuny.svg?">
+    <img src="https://img.shields.io/github/issues-pr-raw/znuny/Znuny?">
+    <img src="https://img.shields.io/github/issues-pr-closed-raw/znuny/Znuny?color=brightgreen">
+    <br>
+    <img src="https://img.shields.io/github/contributors/znuny/Znuny?">
+    <img src="https://img.shields.io/github/languages/count/znuny/Znuny?style=flat&label=language">
+    <br><img src="https://img.shields.io/discord/836533233885773825?style=flat-square">
+</p>
+<hr>
+
+
+Znuny LTS
+===================================
+Znuny LTS is a continuation of the ((OTRS)) Community Edition (Version 6.0.30) which was declared end of life (EOL) at the end of December 2020.
+
+The primary goal for this project is to provide a maintained and stable version of the well known ticket system.
+
+The second goal is to reestablish a connection to the community.
+
+This project will keep the compatibility with implementations and integrations built upon version 6 of ((OTRS)) Community Edition.
 
 
 License
 =======
-It is distributed under the GNU General Public License - see the
-accompanying [COPYING](COPYING) file for more details.
+The project is distributed under the GNU General Public License (GPL v3) - see the accompanying [COPYING](COPYING) file for general license information.
+If you need more details you can have a look [here](https://snyk.io/learn/what-is-gpl-license-gplv3-explained/).
 
 
 Documentation
 =============
-You can find documentation [online](https://doc.otrs.com/). The source code of OTRS and its public extension
-modules is available on [github](https://github.com/OTRS).
+You can find documentation [here](https://doc.znuny.org/).
+The source code of Znuny LTS is publicly available on [GitHub](https://github.com/znuny/znuny).
+
+You want to get in touch?
+- [Project website](https://www.znuny.org)
+- [Community forum](https://community.znuny.org)
+- [Discord Server](https://discord.gg/XTud3WWZTs)
+- [Commercial services](https://www.znuny.com)
 
 
-Professional Services for OTRS
-==============================
-
-Whether you need help in configuring or customizing OTRS or you want to be on the safe side,
-don't hesitate to contact us: We offer a wide range of professional services such as
-world-wide enterprise support, consulting and engineering including process design,
-implementation, customization, application support, and fully managed service.
-
-We offer best professional support from the OTRS team, reliable OTRS security and regular free updates as well as an
-[exclusive set of additional Business Features](https://otrs.com/how-to-buy/packages/#feature-add-ons) that you can
-flexibly activate or deactivate according to different deployment scenarios.
-
-The [OTRS Group](https://www.otrs.com/) offers specific [training programs](https://otrs.com/academy/#trainings) in
-different countries. You can either participate in one of our public OTRS Administrator training seminars which take
-place regularly, or benefit from an inhouse training seminar that covers all the specific needs of your company.
 
 Software requirements
 =====================
-Perl
+Operating system
+- Linux (Debian or Red Hat preferred)
 - Perl 5.16.0 or higher
 
-Webserver
-- Apache2 + mod_perl2 or higher (recommended)
-- Webserver with CGI support (CGI is not recommended)
+Web server
+- Apache 2 + mod_perl2 or higher (recommended)
+- Web server with CGI support (CGI is not recommended)
 
 Databases
 - MySQL 5.0 or higher (MySQL 8+ is [not supported](https://bugs.otrs.org/show_bug.cgi?id=13866))
 - MariaDB
 - PostgreSQL 9.2 or higher
-- Oracle 10g or higher (OTRS 9 will not support Oracle as application database anymore)
+- Oracle 10g or higher
 
 Browsers
-- Use a modern web browser.
 - These browsers are not supported:
-  - Internet Explorer before version 11 (OTRS 9 will not support Internet Explorer anymore)
+  - Internet Explorer before version 11
   - Firefox before version 31
   - Safari before version 6
+
+Vendor
+=======
+This project is mainly funded by Znuny GmbH, Berlin.
+If you need professional support or consulting, feel free to contact us.
+
+[Znuny Website](https://www.znuny.com)

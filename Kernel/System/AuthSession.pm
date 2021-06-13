@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -323,6 +324,48 @@ sub RemoveSessionID {
     return $Self->{Backend}->RemoveSessionID(%Param);
 }
 
+=head2 RemoveSessionByUser()
+
+Removes a session from a user.
+
+    $SessionObject->RemoveSessionByUser(
+        UserLogin => 'some_user_login'
+    );
+
+Returns true (session deleted) or false (if session can't get deleted).
+
+=cut
+
+sub RemoveSessionByUser {
+    my ( $Self, %Param ) = @_;
+
+    # Check needed stuff.
+    if ( !$Param{UserLogin} ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'Need UserLogin!'
+        );
+        return;
+    }
+
+    my @SessionIDs = $Self->{Backend}->GetAllSessionIDs();
+
+    SESSIONID:
+    for my $SessionID (@SessionIDs) {
+        my %SessionData = $Self->{Backend}->GetSessionIDData(
+            SessionID => $SessionID,
+        );
+
+        next SESSIONID if $SessionData{UserLogin} ne $Param{UserLogin};
+
+        $Self->{Backend}->RemoveSessionID(
+            SessionID => $SessionID,
+        );
+    }
+
+    return 1;
+}
+
 =head2 UpdateSessionID()
 
 update session info by key and value, returns true (if ok) and
@@ -339,17 +382,12 @@ false (if can't update)
 sub UpdateSessionID {
     my ( $Self, %Param ) = @_;
 
-    if ( $Param{Key} ) {
-
-        my @Parts = split /:/, $Param{Key};
-
-        if ( defined $Parts[1] ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Can't update key: '$Param{Key}' because ':' is not allowed!",
-            );
-            return;
-        }
+    if ( $Param{Key} && $Param{Key} =~ /:/ ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Can't update key: '$Param{Key}' because ':' is not allowed!",
+        );
+        return;
     }
 
     return $Self->{Backend}->UpdateSessionID(%Param);

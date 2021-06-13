@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # Copyright (C) 2003 Gilberto Cezar de Almeida <gibalmeida at hotmail.com>
 # Copyright (C) 2005 Alterado por Glaucia C. Messina (glauglauu@yahoo.com)
 # Copyright (C) 2007-2010 Fabricio Luiz Machado <soprobr gmail.com>
@@ -1352,12 +1353,12 @@ sub Data {
         'Please visit our customer portal and file a request.' => 'Por favor visite nosso portal de clientes e registre um pedido.',
         'Everything else will be done as part of your contract.' => 'Tudo mais será feito como parte do seu contrato.',
         'Your installed OTRS version is %s.' => 'Sua versão do OTRS instalada é %s.',
-        'To install this package, you need to update to OTRS %s or higher.' =>
-            'Para instalar este pacote, você precisa atualizar para OTRS %s ou superior.',
+        'To install this package, you need to update to Znuny %s or higher.' =>
+            'Para instalar este pacote, você precisa atualizar para Znuny %s ou superior.',
         'To install this package, the Maximum OTRS Version is %s.' => 'Para instalar este pacote, a versão máxima do OTRS é %s.',
         'To install this package, the required Framework version is %s.' =>
             'Para instalar este pacote, a versão do framework requerida é %s.',
-        'Why should I keep OTRS up to date?' => 'Por que eu deveria manter o OTRS atualizado?',
+        'Why should I keep Znuny up to date?' => 'Por que eu deveria manter o Znuny atualizado?',
         'You will receive updates about relevant security issues.' => 'Você receberá atualizações sobre questões de segurança relevantes.',
         'You will receive updates for all other relevant OTRS issues' => 'Você receberá atualizações para todas as outras questões relevantes do OTRS',
         'With your existing contract you can only use a small part of the %s.' =>
@@ -1415,19 +1416,19 @@ sub Data {
             'Você realmente quer reinstalar este pacote? Quaisquer alterações manuais serão perdidas.',
         'Go to updating instructions' => 'Vá para instruções de atualização',
         'package information' => 'informação do pacote',
-        'Package installation requires a patch level update of OTRS.' => 'Pacote de Instalação requer atualização do OTRS',
-        'Package update requires a patch level update of OTRS.' => 'Atualização do pacote requer atualização de nível do OTRS',
+        'Package installation requires a patch level update of Znuny.' => 'Pacote de Instalação requer atualização do Znuny',
+        'Package update requires a patch level update of Znuny.' => 'Atualização do pacote requer atualização de nível do Znuny',
         'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
             'Se você é um cliente OTRS Business Solution™, por favor visite nosso portal de clientes e registre um pedido.',
-        'Please note that your installed OTRS version is %s.' => 'Por favor note que a sua versão do OTRS instalada é %s.',
-        'To install this package, you need to update OTRS to version %s or newer.' =>
-            'Para instalar este pacote, você precisa atualizar seu OTRS para versão %s ou superior.',
-        'This package can only be installed on OTRS version %s or older.' =>
-            'Este pacote smente pode ser instalado na versão %s ou inferior do OTRS.',
-        'This package can only be installed on OTRS version %s or newer.' =>
-            'Este pacote smente pode ser instalado na versão %s ou superior do OTRS.',
-        'You will receive updates for all other relevant OTRS issues.' =>
-            'Você receberá atualizações para todos os outros problemas relevantes do OTRS.',
+        'Please note that your installed Znuny version is %s.' => 'Por favor note que a sua versão do Znuny instalada é %s.',
+        'To install this package, you need to update Znuny to version %s or newer.' =>
+            'Para instalar este pacote, você precisa atualizar seu Znuny para versão %s ou superior.',
+        'This package can only be installed on Znuny version %s or older.' =>
+            'Este pacote smente pode ser instalado na versão %s ou inferior do Znuny.',
+        'This package can only be installed on Znuny version %s or newer.' =>
+            'Este pacote smente pode ser instalado na versão %s ou superior do Znuny.',
+        'You will receive updates for all other relevant Znuny issues.' =>
+            'Você receberá atualizações para todos os outros problemas relevantes do Znuny.',
         'How can I do a patch level update if I don’t have a contract?' =>
             'Como eu posso fazer uma atualização de nível de patch se eu não tenho um contrato?',
         'Please find all relevant information within the updating instructions at %s.' =>
@@ -5376,7 +5377,7 @@ sub Data {
         # Perl Module: Kernel/System/Web/InterfaceInstaller.pm
         'Action "%s" not found!' => 'Ação "%s" não encontrada!',
 
-        # Database XML Definition: scripts/database/otrs-initial_insert.xml
+        # Database XML / SOPM Definition: scripts/database/otrs-initial_insert.xml
         'invalid-temporarily' => 'inválido-temporariamente',
         'Group for default access.' => 'Grupo de acesso padrão',
         'Group of all administrators.' => 'Grupo de todos os administradores.',
@@ -7802,7 +7803,6 @@ Obrigado pela ajuda!
             'Número de tickets a serem exibidos em cada página de resultado de pesquisa na interface de agente.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             '',
-        'Number of tickets to be displayed in each page.' => 'Número de tickets que serão exibidos por página.',
         'OTRS Group Services' => 'Serviços do Grupo OTRS',
         'OTRS News' => 'Notícias sobre o OTRS',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>

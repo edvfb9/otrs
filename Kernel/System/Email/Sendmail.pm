@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -44,9 +45,9 @@ sub Send {
     );
 
     # check needed stuff
-    for (qw(Header Body ToArray)) {
-        if ( !$Param{$_} ) {
-            my $ErrorMsg = "Need $_!";
+    for my $Needed (qw(Header Body ToArray)) {
+        if ( !$Param{$Needed} ) {
+            my $ErrorMsg = "Need $Needed!";
 
             $Param{CommunicationLogObject}->ObjectLog(
                 ObjectLogType => 'Message',
@@ -63,9 +64,12 @@ sub Send {
     }
 
     # from for arg
-    my $Arg = quotemeta( $Param{From} );
+    my $Arg;
     if ( !$Param{From} ) {
         $Arg = "''";
+    }
+    else {
+        $Arg = quotemeta( $Param{From} );
     }
 
     # get recipients
@@ -107,11 +111,12 @@ sub Send {
         ObjectLogType => 'Connection',
     );
 
+    my $From = $Param{From} // '';
     $Param{CommunicationLogObject}->ObjectLog(
         ObjectLogType => 'Connection',
         Priority      => 'Info',
         Key           => 'Kernel::System::Email::Sendmail',
-        Value         => "Sending email from '$Param{From}' to '$ToString'.",
+        Value         => "Sending email from '$From' to '$ToString'.",
     );
 
     # set sendmail binary
@@ -177,7 +182,7 @@ sub Send {
         ObjectLogType => 'Connection',
         Priority      => 'Info',
         Key           => 'Kernel::System::Email::Sendmail',
-        Value         => "Email successfully sent from '$Param{From}' to '$ToString'!",
+        Value         => "Email successfully sent from '$From' to '$ToString'!",
     );
 
     $Param{CommunicationLogObject}->ObjectLogStop(

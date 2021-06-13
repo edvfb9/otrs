@@ -5,6 +5,8 @@
 # Copyright (C) 2007 Aron Ujvari <ujvari@hungary.com>
 # Copyright (C) 2009 Arnold Matyasi <arn@webma.hu>
 # Copyright (C) 2013 Csaba Németh <csaba@sopron.hu>
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -807,7 +809,7 @@ sub Data {
         'Enter a regular expression to restrict which error messages should cause error handling module execution.' =>
             'Egy reguláris kifejezés megadása annak korlátozásához, hogy mely hibaüzeneteknek kell hibakezelési modul végrehajtást okoznia.',
         'Error message subject and data (as seen in the debugger error entry) will considered for a match.' =>
-            'A hibaüzenet tárgya és adatai (amint a hibakereső hibabejegyzésében létható) lesznek figyelembe véve egy egyezésnél.',
+            'A hibaüzenet tárgya és adatai (amint a hibakereső hibabejegyzésében látható) lesznek figyelembe véve egy egyezésnél.',
         'Example: Enter \'^.*401 Unauthorized.*\$\' to handle only authentication related errors.' =>
             'Példa: A „^.*401 Unauthorized.*\$” megadásával csak a hitelesítéssel kapcsolatos hibák kezelhetők.',
         'Error stage filter' => 'Hibaállapot szűrő',
@@ -1352,12 +1354,12 @@ sub Data {
         'Please visit our customer portal and file a request.' => 'Látogassa meg az ügyfélportálunkat, és küldjön egy kérést.',
         'Everything else will be done as part of your contract.' => 'Minden más a szerződése részeként fog történni.',
         'Your installed OTRS version is %s.' => 'A telepített OTRS verziója %s.',
-        'To install this package, you need to update to OTRS %s or higher.' =>
+        'To install this package, you need to update to Znuny %s or higher.' =>
             'A csomag telepítéséhez frissítenie kell az OTRS %s vagy magasabb verziójára.',
         'To install this package, the Maximum OTRS Version is %s.' => 'A csomag telepítéséhez a legmagasabb OTRS verzió %s.',
         'To install this package, the required Framework version is %s.' =>
             'A csomag telepítéséhez a szükséges keretrendszer-verzió %s.',
-        'Why should I keep OTRS up to date?' => 'Miért kell naprakészen tartanom az OTRS-t?',
+        'Why should I keep Znuny up to date?' => 'Miért kell naprakészen tartanom az Znuny-t?',
         'You will receive updates about relevant security issues.' => 'Frissítéseket fog kapni a fontos biztonsági problémákról.',
         'You will receive updates for all other relevant OTRS issues' => 'Frissítéseket fog kapni minden egyéb fontos OTRS problémáról',
         'With your existing contract you can only use a small part of the %s.' =>
@@ -1415,19 +1417,19 @@ sub Data {
             'Valóban újra szeretné telepíteni ezt a csomagot? Minden kézi változtatás el fog veszni.',
         'Go to updating instructions' => 'Ugrás a frissítési utasításokhoz',
         'package information' => 'csomaginformációk',
-        'Package installation requires a patch level update of OTRS.' => 'A csomagtelepítés az OTRS hibajavító szintű frissítését igényli.',
-        'Package update requires a patch level update of OTRS.' => 'A csomagfrissítés az OTRS hibajavító szintű frissítését igényli.',
+        'Package installation requires a patch level update of Znuny.' => 'A csomagtelepítés az Znuny hibajavító szintű frissítését igényli.',
+        'Package update requires a patch level update of Znuny.' => 'A csomagfrissítés az Znuny hibajavító szintű frissítését igényli.',
         'If you are a OTRS Business Solution™ customer, please visit our customer portal and file a request.' =>
             'Ha Ön OTRS Business Solution™ ügyfél, akkor látogassa meg az ügyfélportálunkat, és küldjön egy kérést.',
-        'Please note that your installed OTRS version is %s.' => 'Ne feledje, hogy a telepített OTRS verziója %s.',
-        'To install this package, you need to update OTRS to version %s or newer.' =>
-            'A csomag telepítéséhez frissítenie kell az OTRS-t %s vagy újabb verzióra.',
-        'This package can only be installed on OTRS version %s or older.' =>
-            'Ez a csomag csak az OTRS %s vagy régebbi verziójára telepíthető.',
-        'This package can only be installed on OTRS version %s or newer.' =>
-            'Ez a csomag csak az OTRS %s vagy újabb verziójára telepíthető.',
-        'You will receive updates for all other relevant OTRS issues.' =>
-            'Frissítéseket fog kapni minden egyéb fontos OTRS problémáról.',
+        'Please note that your installed Znuny version is %s.' => 'Ne feledje, hogy a telepített Znuny verziója %s.',
+        'To install this package, you need to update Znuny to version %s or newer.' =>
+            'A csomag telepítéséhez frissítenie kell az Znuny-t %s vagy újabb verzióra.',
+        'This package can only be installed on Znuny version %s or older.' =>
+            'Ez a csomag csak az Znuny %s vagy régebbi verziójára telepíthető.',
+        'This package can only be installed on Znuny version %s or newer.' =>
+            'Ez a csomag csak az Znuny %s vagy újabb verziójára telepíthető.',
+        'You will receive updates for all other relevant Znuny issues.' =>
+            'Frissítéseket fog kapni minden egyéb fontos Znuny problémáról.',
         'How can I do a patch level update if I don’t have a contract?' =>
             'Hogyan végezhetek hibajavító szintű frissítést, ha nincs szerződésem?',
         'Please find all relevant information within the updating instructions at %s.' =>
@@ -1631,7 +1633,7 @@ sub Data {
 
         # Template: AdminProcessManagementProcessEdit
         'Edit Process' => 'Folyamat szerkesztése',
-        'Print process information' => 'Folyamat-információk nyomtatása',
+        'Print process information' => 'Folyamatinformációk nyomtatása',
         'Delete Process' => 'Folyamat törlése',
         'Delete Inactive Process' => 'Inaktív folyamat törlése',
         'Available Process Elements' => 'Elérhető folyamatelemek',
@@ -1645,7 +1647,7 @@ sub Data {
             'Kapcsolatot létesíthet két tevékenység között, ha az átmenet elemet a kapcsolat kezdő tevékenysége fölé ejti. Ezután viheti a nyíl szabad végét a befejező tevékenységre.',
         'Actions can be assigned to a Transition by dropping the Action Element onto the label of a Transition.' =>
             'Műveletek rendelhetők egy átmenethez, ha a műveletelemet egy átmenet címkéjére ejti.',
-        'Edit Process Information' => 'Folyamat-információk szerkesztése',
+        'Edit Process Information' => 'Folyamatinformációk szerkesztése',
         'Process Name' => 'Folyamat neve',
         'The selected state does not exist.' => 'A kijelölt állapot nem létezik.',
         'Add and Edit Activities, Activity Dialogs and Transitions' => 'Tevékenységek, tevékenység párbeszédek és átmenetek hozzáadása és szerkesztése',
@@ -1729,7 +1731,7 @@ sub Data {
         'If a ticket is closed and the customer sends a follow up the ticket will be locked to the old owner.' =>
             'Ha egy jegy le van zárva, és az ügyfél egy követést küld, a jegy zárolva lesz a régi tulajdonosnak.',
         'System address' => 'Rendszercím',
-        'Will be the sender address of this queue for email answers.' => 'Lesz-e a várólista feladójának címe a válasz e-mailekhez.',
+        'Will be the sender address of this queue for email answers.' => 'A várólista küldőcíme lesz a válasz e-mailekhez.',
         'Default sign key' => 'Alapértelmezett aláíró kulcs',
         'To use a sign key, PGP keys or S/MIME certificates need to be added with identifiers for selected queue system address.' =>
             'Egy aláíró kulcs használatához azonosítókkal rendelkező PGP kulcsokat vagy S/MIME tanúsítványokat kell hozzáadni a kiválasztott várólista rendszercíméhez.',
@@ -1775,7 +1777,7 @@ sub Data {
         'Instructions' => 'Utasítások',
         'System Deregistration not Possible' => 'A rendszer regisztrációjának megszüntetése nem lehetséges',
         'Please note that you can\'t deregister your system if you\'re using the %s or having a valid service contract.' =>
-            'Ne feledje, hogy hogy nem tudja a rendszer regisztrációját megszüntetni az %s használatakor, vagy ha érvényes szolgáltatói szerződése van.',
+            'Ne feledje, hogy nem tudja a rendszer regisztrációját megszüntetni az %s használatakor, vagy ha érvényes szolgáltatói szerződése van.',
         'OTRS-ID Login' => 'OTRS-azonosító bejelentkezés',
         'Read more' => 'Olvassa tovább',
         'You need to log in with your OTRS-ID to register your system.' =>
@@ -2210,7 +2212,7 @@ sub Data {
         'Firstname' => 'Keresztnév',
         'Lastname' => 'Vezetéknév',
         'A user with this username already exists!' => 'Már létezik ilyen felhasználónevű felhasználó!',
-        'Will be auto-generated if left empty.' => 'Legyen automatikusan előállított, ha üresen van hagyva.',
+        'Will be auto-generated if left empty.' => 'Automatikusan elő lesz állítva, ha üresen van hagyva.',
         'Mobile' => 'Mobiltelefon',
         'Effective Permissions for Agent' => 'Tényleges jogosultságok az ügyintézőnél',
         'This agent has no group permissions.' => 'Ennek az ügyintézőnek nincsenek csoportjogosultságai.',
@@ -3136,7 +3138,7 @@ sub Data {
             'Üzenetek fogadása a(z) „%s” értesítéshez a(z) „%s” átviteli módszerrel.',
 
         # Template: ActivityDialogHeader
-        'Process Information' => 'Folyamat-információk',
+        'Process Information' => 'Folyamatinformációk',
         'Dialog' => 'Párbeszéd',
 
         # Template: Article
@@ -5376,7 +5378,7 @@ sub Data {
         # Perl Module: Kernel/System/Web/InterfaceInstaller.pm
         'Action "%s" not found!' => 'A(z) „%s” művelet nem található!',
 
-        # Database XML Definition: scripts/database/otrs-initial_insert.xml
+        # Database XML / SOPM Definition: scripts/database/otrs-initial_insert.xml
         'invalid-temporarily' => 'átmenetileg érvénytelen',
         'Group for default access.' => 'Csoport az alapértelmezett hozzáféréshez.',
         'Group of all administrators.' => 'Az összes adminisztrátor csoportja.',
@@ -7802,7 +7804,6 @@ Az Ön segélyszolgálat csapata
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyintézői felületen.',
         'Number of tickets to be displayed in each page of a search result in the customer interface.' =>
             'Egy keresési eredmény minden egyes oldalán megjelenített jegyek száma az ügyfélfelületen.',
-        'Number of tickets to be displayed in each page.' => 'Az egyes oldalakon megjelenített jegyek száma.',
         'OTRS Group Services' => 'OTRS csoport szolgáltatások',
         'OTRS News' => 'OTRS hírek',
         'OTRS can use one or more readonly mirror databases for expensive operations like fulltext search or statistics generation. Here you can specify the DSN for the first mirror database.' =>

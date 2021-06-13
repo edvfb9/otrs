@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -11,6 +12,7 @@ package Kernel::System::UnitTest::Selenium;
 use strict;
 use warnings;
 
+use Devel::StackTrace();
 use MIME::Base64();
 use File::Path();
 use File::Temp();
@@ -176,38 +178,29 @@ sub new {
 sub SeleniumErrorHandler {
     my ( $Self, $Error ) = @_;
 
-    my $Caller     = 0;
-    my $StackTrace = "Selenium stack trace: ($$): \n";
+    my $SuppressFrames;
 
-    COUNT:
-    for ( my $Count = 0; $Count < 30; $Count++ ) {
+    # Generate stack trace information.
+    #   Don't store caller args, as this sometimes blows up due to an internal Perl bug
+    #   (see https://github.com/Perl/perl5/issues/10687).
+    my $StackTrace = Devel::StackTrace->new(
+        indent         => 1,
+        no_args        => 1,
+        ignore_package => [ 'Selenium::Remote::Driver', 'Try::Tiny', __PACKAGE__ ],
+        message        => 'Selenium stack trace started',
+        frame_filter   => sub {
 
-        my ( $Package1, $Filename1, $Line1, $Subroutine1 ) = caller( $Caller + $Count );
+            # Limit stack trace to test evaluation itself.
+            return 0          if $SuppressFrames;
+            $SuppressFrames++ if $_[0]->{caller}->[3] eq 'Kernel::System::UnitTest::Driver::Run';
 
-        last COUNT if !$Line1;
-
-        my ( $Package2, $Filename2, $Line2, $Subroutine2 ) = caller( $Caller + 1 + $Count );
-
-        # if there is no caller module use the file name
-        $Subroutine2 ||= $0;
-
-        # Cut limit stack trace to test evaluation itself.
-        last COUNT if $Subroutine2 eq 'Kernel::System::UnitTest::Driver::Run';
-
-        # print line if upper caller module exists
-        my $VersionString = '';
-
-        eval { $VersionString = $Package1->VERSION || ''; };    ## no critic
-
-        # version is present
-        if ($VersionString) {
-            $VersionString = ' (v' . $VersionString . ')';
+            # Remove the long serialized eval texts from the frame to keep the trace short.
+            if ( $_[0]->{caller}->[6] ) {
+                $_[0]->{caller}->[6] = '{...}';
+            }
+            return 1;
         }
-
-        $StackTrace .= "   Module: $Subroutine2$VersionString Line: $Line1\n";
-
-        last COUNT if !$Line2;
-    }
+    )->as_string();
 
     $Self->{_SeleniumStackTrace} = $StackTrace;
     $Self->{_SeleniumException}  = $Error;
@@ -382,11 +375,11 @@ sub Login {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(Type User Password)) {
-        if ( !$Param{$_} ) {
+    for my $Needed (qw(Type User Password)) {
+        if ( !$Param{$Needed} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!",
+                Message  => "Need $Needed!",
             );
             return;
         }
@@ -421,18 +414,18 @@ sub Login {
             $Self->{UnitTestDriverObject}->True( 1, 'Login sequence ended...' );
         };
 
-        # an error happend
+        # an error occurred
         if ($@) {
 
             $Self->{UnitTestDriverObject}->True( 1, "Login attempt $Try of $MaxTries not successful." );
 
             # try again
             next TRY if $Try < $MaxTries;
-
+            $Self->HandleError($@);
             die "Login failed!";
         }
 
-        # login was sucessful
+        # login was successful
         else {
             last TRY;
         }
@@ -453,7 +446,7 @@ Exactly one condition (JavaScript or WindowCount) must be specified.
         ElementExists  => ['css-selector', 'css'],
         ElementMissing => 'xpath-selector',                  # Wait until an element is not present
         ElementMissing => ['css-selector', 'css'],
-        JavaScript     => 'return $(".someclass").length',   # Javascript code that checks condition
+        JavaScript     => 'return $(".someclass").length',   # JavaScript code that checks condition
         WindowCount    => 2,                                 # Wait until this many windows are open
         Time           => 20,                                # optional, wait time in seconds (default 20)
     );

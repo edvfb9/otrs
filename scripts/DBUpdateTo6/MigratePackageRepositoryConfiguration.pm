@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -42,12 +43,15 @@ sub Run {
     my @FrameworkVersionParts = split /\./, $ConfigObject->Get('Version');
     my $FrameworkVersion      = $FrameworkVersionParts[0];
 
-    my $CurrentITSMRepository = "http://ftp.otrs.org/pub/otrs/itsm/packages$FrameworkVersion/";
+    my $CurrentITSMRepository = "https://download.znuny.org/releases/itsm/packages$FrameworkVersion/";
 
     return 1 if $RepositoryList{$CurrentITSMRepository};
 
     # Make sure ITSM repository matches the current framework version.
-    my @Matches = grep { $_ =~ m{http://ftp\.otrs\.org/pub/otrs/itsm/packages\d+/}msxi } sort keys %RepositoryList;
+    my @Matches = grep {
+        $_
+            =~ m{(http|https|ftp):\/\/(ftp\.otrs\.org\/pub\/otrs|download\.znuny\.org\/releases)\/itsm\/packages\d+\/}msxi
+    } sort keys %RepositoryList;
 
     return 1 if !@Matches;
 
